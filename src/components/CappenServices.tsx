@@ -62,8 +62,7 @@ export const CappenServices = () => {
               
               <div className="relative z-10 p-12">
                 <div className="flex justify-between items-start">
-                  <h3 className={`text-4xl md:text-4xl font-light transition-colors duration-300 ${
-                    expandedIndex === index ? "text-background" : "text-foreground group-hover:text-primary"
+                  <h3 className={`text-xl sm:text-2xl md:text-4xl font-light transition-colors duration-300 ${                    expandedIndex === index ? "text-background" : "text-foreground group-hover:text-primary"
                   }`}>
                     <InteractiveText text={service.title} />
                   </h3>

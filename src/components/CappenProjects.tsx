@@ -2,10 +2,72 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
 const projects = [
-  { name: "City Wall Clean", year: "2024", category: "OK" },
-  { name: "Style in Georgia", year: "2024", category: "E-COMMERCE" },
-  { name: "Google (no)", year: "2023", category: "HEALTHCARE" },
-  { name: "Apple (no)", year: "2023", category: "ENTERTAINMENT" },
+  {
+    name: "Tsugroomella",
+    year: "2024",
+    category: "BEAUTY & GROOMING",
+    instagram: "https://www.instagram.com/tsugroomella?igsh=MXI2bWNscmpoNmNqNg==",
+  },
+  {
+    name: "Style in Georgia",
+    year: "2024",
+    category: "FASHION & LIFESTYLE",
+    instagram: "https://www.instagram.com/styleingeorgia?igsh=MW1qemR1Z3k0MzFudQ==",
+  },
+  {
+    name: "Vent Service",
+    year: "2024",
+    category: "SERVICE BUSINESS",
+    instagram: "https://www.instagram.com/vent.service_ge?igsh=MWlsbWwxc2x4bDB1Yw==",
+  },
+  {
+    name: "Diana Kvariani",
+    year: "2024",
+    category: "FASHION BRAND",
+    instagram: "https://www.instagram.com/diana_kvariani_official?igsh=OTZuMGYzcW85emkw",
+  },
+  {
+    name: "The Park",
+    year: "2024",
+    category: "HOSPITALITY",
+    instagram: "https://www.instagram.com/the.park.tbilisi?igsh=MXc0aXF1MzM5b3RpMg==",
+  },
+  {
+    name: "Auto export",
+    year: "2024",
+    category: "AUTOMOTIVE",
+    instagram: "https://www.instagram.com/autoexport.ge?igsh=cjVpYmdhMDlsOHU4",
+  },
+  {
+    name: "City wall clean",
+    year: "2025",
+    category: "URBAN SERVICES",
+    instagram: "https://www.instagram.com/citywallclean?igsh=ZXMzbHZrbTAxeHZw",
+  },
+  {
+    name: "Balance House",
+    year: "2025",
+    category: "ARCHITECTURE & REAL ESTATE",
+    instagram: "https://www.instagram.com/balance.houses?igsh=MTI2N3c1ZnJuejN5cw==",
+  },
+  {
+    name: "Tsre.co",
+    year: "2025",
+    category: "REAL ESTATE",
+    instagram: "https://www.instagram.com/tsre.co?igsh=MXEybmx6bnV3amV6Zw==",
+  },
+  {
+    name: "Suptad Clean",
+    year: "2025",
+    category: "CLEANING SERVICES",
+    instagram: "https://www.instagram.com/suptad.clean?igsh=MXM1MmI3MGdvajc4cQ==",
+  },
+  {
+    name: "Ava 100",
+    year: "2025",
+    category: "RETAIL & FMCG",
+    instagram: "https://www.instagram.com/ava100.ua?igsh=MTR5OWIyeW42YTBuYw==",
+  },
 ];
 
 export const CappenProjects = () => {
@@ -32,14 +94,26 @@ export const CappenProjects = () => {
   );
 };
 
-const ProjectItem = ({ project, index }: { project: any; index: number }) => {
-  const ref = useRef(null);
+const ProjectItem = ({
+  project,
+  index,
+}: {
+  project: {
+    name: string;
+    year: string;
+    category: string;
+    instagram: string;
+  };
+  index: number;
+}) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
 
   const x = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const xOpposite = useTransform(x, (v) => -v);
 
   return (
     <motion.div
@@ -50,17 +124,23 @@ const ProjectItem = ({ project, index }: { project: any; index: number }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
-      <div className="flex justify-between items-center">
-        <motion.h3
+      <div className="flex justify-between items-center gap-4">
+        {/* Название → кликабельный линк на Instagram */}
+        <motion.a
+          href={project.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-5xl md:text-7xl font-light group-hover:text-primary transition-colors duration-300"
-          style={{ x: index % 2 === 0 ? x : useTransform(x, v => -v) }}
+          style={{ x: index % 2 === 0 ? x : xOpposite }}
         >
           {project.name}
-        </motion.h3>
+        </motion.a>
 
-        <div className="text-right">
+        <div className="text-right shrink-0">
           <div className="text-2xl font-light">{project.year}</div>
-          <div className="text-lg text-muted-foreground">{project.category}</div>
+          <div className="text-lg text-muted-foreground">
+            {project.category}
+          </div>
         </div>
       </div>
     </motion.div>

@@ -7,7 +7,10 @@ export const CappenNavbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPercentage = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+      const scrollPercentage = Math.round(
+        (window.scrollY /
+          (document.documentElement.scrollHeight - window.innerHeight)) * 100
+      );
       setScrollCount(scrollPercentage);
     };
 
@@ -16,30 +19,43 @@ export const CappenNavbar = () => {
   }, []);
 
   return (
-    <motion.nav
-      className="fixed top-0 left-0 right-0 z-50 px-8 py-6 flex justify-between items-center"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    >
-      <motion.div
-        className="text-xl font-light tracking-wider"
-        whileHover={{ scale: 1.05 }}
-      >
-        <InteractiveText text="WENGY" />
-      </motion.div>
+    
+    <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
 
-      <div className="text-6xl font-light tabular-nums">
-        {scrollCount.toString().padStart(2, '0')}
-      </div>
-
-      <motion.a
-        href="#contact"
-        className="text-xl font-light tracking-wider hover:text-primary transition-colors"
-        whileHover={{ scale: 1.05 }}
+      <motion.nav
+        className="
+          pointer-events-auto
+          px-8 py-6
+          flex justify-between items-center
+          bg-transparent
+          pt-[calc(env(safe-area-inset-top)+1rem)]
+        "
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
-        <InteractiveText text="CONTACT" />
-      </motion.a>
-    </motion.nav>
+        {/* LEFT */}
+        <motion.div
+          className="text-xl font-light tracking-wider"
+          whileHover={{ scale: 1.05 }}
+        >
+          <InteractiveText text="WENGY" />
+        </motion.div>
+
+        {/* CENTER SCROLL процент */}
+        <div className="text-6xl font-light tabular-nums">
+          {scrollCount.toString().padStart(2, "0")}
+        </div>
+
+        {/* RIGHT — CONTACT */}
+        <motion.a
+          href="#contact"
+          className="text-xl font-light tracking-wider hover:text-primary transition-colors"
+          whileHover={{ scale: 1.05 }}
+        >
+          <InteractiveText text="CONTACT" />
+        </motion.a>
+      </motion.nav>
+    </div>
   );
 };

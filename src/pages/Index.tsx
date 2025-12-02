@@ -4,24 +4,27 @@ import { CappenSplit } from "@/components/CappenSplit";
 import { CappenAbout } from "@/components/CappenAbout";
 import { CappenServices } from "@/components/CappenServices";
 import { CappenProjects } from "@/components/CappenProjects";
-import { VRCasesCarousel } from "@/components/VRCasesCarousel";
+import { VRCarousel } from "@/components/VRCarousel";
 import { VRTeamCarousel } from "@/components/VRTeamCarousel";
 import { CappenFAQ } from "@/components/CappenFAQ";
 import { CappenContact } from "@/components/CappenContact";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
       <CappenNavbar />
-      <CappenHero />
-      <CappenSplit />
-      <CappenAbout />
-      <CappenServices />
-      <CappenProjects />
-      <VRCasesCarousel />
-      <VRTeamCarousel />
-      <CappenFAQ />
-      <CappenContact />
+
+      <main>
+        <CappenHero />
+        <CappenSplit />
+        <CappenAbout />
+        <CappenServices />
+        <CappenProjects />
+        <VRCarousel />
+        <VRTeamCarousel />
+        <CappenFAQ />
+        <CappenContact />
+      </main>
     </div>
   );
 };
