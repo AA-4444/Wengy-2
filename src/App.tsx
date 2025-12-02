@@ -43,7 +43,7 @@ const App = () => {
               >
                 <Routes>
                   <Route path="/" element={<Index />} />
-                  {/* Все кастомные роуты выше */}
+
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>

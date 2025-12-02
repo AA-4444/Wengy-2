@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ava from "@/assets/project1.png";
@@ -26,10 +26,10 @@ export const VRCarousel = () => {
   const [isMobile, setIsMobile] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  // Detect mobile device
-  useState(() => {
+  // Detect mobile device (нормально, через useEffect)
+  useEffect(() => {
     setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
-  });
+  }, []);
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
@@ -45,9 +45,10 @@ export const VRCarousel = () => {
     }
   };
 
-  // Touch handlers for swipe
+  // Touch handlers for swipe (ТОЛЬКО на контейнере карусели)
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
+    setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -55,28 +56,30 @@ export const VRCarousel = () => {
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 75) {
-      // Swiped left
-      goToNext();
-    }
+    const distance = touchStart - touchEnd;
 
-    if (touchStart - touchEnd < -75) {
-      // Swiped right
+    if (distance > 75) {
+      // swipe left → next
+      goToNext();
+    } else if (distance < -75) {
+      // swipe right → prev
       goToPrevious();
     }
+
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   const getCardPosition = (index: number) => {
     let diff = index - currentIndex;
 
-    // Normalize the difference to be between -1 and 1 for smooth circular motion
+    // Normalize diff to circular
     if (diff > items.length / 2) {
       diff -= items.length;
     } else if (diff < -items.length / 2) {
       diff += items.length;
     }
 
-    // Adjust spacing for mobile
     const angle = diff * 45;
     const translateX = diff * (isMobile ? 250 : 400);
     const translateZ = -Math.abs(diff) * (isMobile ? 150 : 200);
@@ -98,11 +101,8 @@ export const VRCarousel = () => {
         isMobile ? "" : "cursor-none"
       }`}
       onMouseMove={handleMouseMove}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-    >      
-    {/* Custom cursor - desktop only */}
+    >
+      {/* Custom cursor - desktop only */}
       {!isMobile && isHovering && (
         <div
           ref={cursorRef}
@@ -128,14 +128,12 @@ export const VRCarousel = () => {
           md:min-h-screen md:justify-center
         "
       >
-      <div className="mb-12 text-center">
-        <h2 className="text-[6vw] font-light mb-4">
-          OUR CASES
-        </h2>
-        <p className="text-xl text-muted-foreground font-light">
-          Immersive cases & digital experiences
-        </p>
-      </div>
+        <div className="mb-12 text-center">
+          <h2 className="text-[6vw] font-light mb-4">OUR CASES</h2>
+          <p className="text-xl text-muted-foreground font-light">
+            Immersive cases & digital experiences
+          </p>
+        </div>
 
         {/* Carousel Container */}
         <div
@@ -144,8 +142,11 @@ export const VRCarousel = () => {
             perspective: isMobile ? "1000px" : "1500px",
             perspectiveOrigin: "center center",
           }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
-          {/* NEW: счетчик в правом верхнем углу, как в VRTeamCarousel */}
+          {/* Counter */}
           <div className="absolute top-4 right-4 md:top-8 md:right-8 text-2xl md:text-4xl font-light tabular-nums text-white z-40">
             {(currentIndex + 1).toString().padStart(2, "0")} /{" "}
             {items.length.toString().padStart(2, "0")}
@@ -195,38 +196,36 @@ export const VRCarousel = () => {
           </div>
         </div>
 
-       {/* Navigation */}
-       <div className="flex gap-4 md:gap-6 mt-8 md:mt-14 z-40 cursor-pointer">
-        <button
-           onClick={goToPrevious}
-           className="
-             flex items-center justify-center
-             rounded-full w-14 h-14 md:w-16 md:h-16
-             bg-transparent
-             border border-white
-             hover:bg-white/10
-             transition-all duration-300 cursor-pointer active:scale-95
-           "
-         >
-           <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-white" />
-         </button>
-         
-         <button
-           onClick={goToNext}
-           className="
-             flex items-center justify-center
-             rounded-full w-14 h-14 md:w-16 md:h-16
-             bg-transparent
-             border border-white
-             hover:bg-white/10
-             transition-all duration-300 cursor-pointer active:scale-95
-           "
-         >
-           <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-white" />
-         </button>
-       </div>
+        {/* Navigation */}
+        <div className="flex gap-4 md:gap-6 mt-8 md:mt-14 z-40 cursor-pointer">
+          <button
+            onClick={goToPrevious}
+            className="
+              flex items-center justify-center
+              rounded-full w-14 h-14 md:w-16 md:h-16
+              bg-transparent
+              border border-white
+              hover:bg-white/10
+              transition-all duration-300 cursor-pointer active:scale-95
+            "
+          >
+            <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 text-white" />
+          </button>
 
-      
+          <button
+            onClick={goToNext}
+            className="
+              flex items-center justify-center
+              rounded-full w-14 h-14 md:w-16 md:h-16
+              bg-transparent
+              border border-white
+              hover:bg:white/10
+              transition-all duration-300 cursor-pointer active:scale-95
+            "
+          >
+            <ChevronRight className="w-6 h-6 md:w-8 md:h-8 text-white" />
+          </button>
+        </div>
       </div>
     </section>
   );

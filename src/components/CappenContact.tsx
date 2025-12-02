@@ -9,26 +9,37 @@ export const CappenContact = () => {
   ];
 
   return (
-    <section
-      id="contact"
-      className="relative min-h-screen bg-black text-white flex items-center justify-center px-6 md:px-16 lg:px-24 py-24 overflow-hidden"
-    >
+   <section
+     id="contact"
+     className="
+       relative min-h-screen bg-black text-white
+       flex items-center justify-center
+       px-6 md:px-16 lg:px-24
+       pt-24 pb-32 md:py-24
+       overflow-hidden
+     "
+   >
+    
      
-     <motion.a
-       href="mailto:wengy.agency@gmail.com"
-       className="
-         inline-block
-         text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl
-         font-black tracking-tight uppercase
-         transition-colors duration-300
-         hover:text-primary
-       "
-       whileHover={{ scale: 1.03 }}
-       transition={{ type: "spring", stiffness: 200, damping: 15 }}
-     >
-       wengy.agency@gmail.com
-     </motion.a>
-
+<motion.a
+      href="mailto:wengy.agency@gmail.com"
+      className="
+        inline-block
+        whitespace-nowrap     /* НЕ ДАЁМ ПЕРЕНОС */ 
+        text-[5vw]            /* фикс для мобильных */
+        sm:text-4xl
+        md:text-5xl
+        lg:text-6xl
+        xl:text-7xl
+        font-black tracking-tight uppercase
+        transition-colors duration-300
+        hover:text-primary
+      "
+      whileHover={{ scale: 1.03 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+    >
+      wengy.agency@gmail.com
+    </motion.a>
       {/* ===== MOBILE ===== */}
       <div className="absolute inset-x-6 bottom-24 flex flex-col items-start gap-8 md:hidden">
         {/* LET’S CONNECT — mobile */}

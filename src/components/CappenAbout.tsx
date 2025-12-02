@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 import { useRef } from "react";
 
 export const CappenAbout = () => {
@@ -8,13 +8,24 @@ export const CappenAbout = () => {
     offset: ["start end", "end start"],
   });
 
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.9]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
+  const blur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [10, 0, 0, 10]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [15, 0, 0, -15]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
 
   return (
-    <section ref={containerRef} className="min-h-screen flex items-center justify-center py-32 px-6">
+    <section ref={containerRef} className="min-h-screen flex items-center justify-center py-32 px-6 overflow-hidden">
       <motion.div
-        style={{ scale, opacity }}
+        style={{ 
+          y,
+          scale, 
+          opacity,
+          filter,
+          rotateX,
+          transformPerspective: 1200
+        }}
         className="max-w-6xl mx-auto text-center"
       >
         <motion.h2
@@ -22,7 +33,7 @@ export const CappenAbout = () => {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
         >
           IT'S ALL ABOUT
           <br />
@@ -36,7 +47,7 @@ export const CappenAbout = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
           We are a visionary independent digital product studio working at the
           intersection of strategy, design, and technology. We lead organizations
