@@ -8,6 +8,7 @@ import { VRCarousel } from "@/components/VRCarousel";
 import { VRTeamCarousel } from "@/components/VRTeamCarousel";
 import { CappenFAQ } from "@/components/CappenFAQ";
 import { CappenContact } from "@/components/CappenContact";
+import { CappenTestimonials } from "@/components/Review";
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
         <CappenProjects />
         <VRCarousel />
         <VRTeamCarousel />
+        <CappenTestimonials />
         <CappenFAQ />
         <CappenContact />
       </main>

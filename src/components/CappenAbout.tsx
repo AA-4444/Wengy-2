@@ -1,35 +1,52 @@
 import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 import { useRef } from "react";
+import bgVideo from "@/assets/video.mp4";
 
 export const CappenAbout = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
   const y = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -100]);
-  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.9]);
+  const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.9, 1, 1, 0.95]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  const blur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [10, 0, 0, 10]);
-  const rotateX = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [15, 0, 0, -15]);
+  const blur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [4, 0, 0, 4]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [10, 0, 0, -10]);
   const filter = useMotionTemplate`blur(${blur}px)`;
 
   return (
-    <section ref={containerRef} className="min-h-screen flex items-center justify-center py-32 px-6 overflow-hidden">
+    <section
+      ref={containerRef}
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+    >
+      <div className="absolute inset-0">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={bgVideo} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
       <motion.div
-        style={{ 
+        style={{
           y,
-          scale, 
+          scale,
           opacity,
           filter,
           rotateX,
-          transformPerspective: 1200
+          transformPerspective: 1200,
         }}
-        className="max-w-6xl mx-auto text-center"
+        className="relative z-10 max-w-6xl mx-auto text-center px-6"
       >
         <motion.h2
-          className="text-[8vw] leading-[1.1] font-light mb-12"
+          className="text-[8vw] leading-[1.1] font-light mb-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
