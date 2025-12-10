@@ -2,10 +2,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import teamMember1 from "@/assets/team-member-1.png";
-import teamMember2 from "@/assets/team-member-2.png";
-import teamMember3 from "@/assets/team-member-3.png";
-import teamMember4 from "@/assets/oleksii.png";
+import vaso from "@/assets/vaso.png";
+import katie from "@/assets/katie.png";
+import alexi from "@/assets/alexi.png";
+import oleksii from "@/assets/oleksii.png";
+import tolia from "@/assets/tolia.png";
 
 
 interface TeamMember {
@@ -17,12 +18,11 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { id: 1, name: "Vaso", surname: "Berulava", role: "SEO", image: teamMember3 },
-  { id: 2, name: "Katia", surname: "Tsymbal", role: "Kto-to", image: teamMember2 },
-  { id: 3, name: "Alexi", surname: "Kto-to", role: "SEO-2", image: teamMember3 },
-  { id: 4, name: "Sofia", surname: "Matuhkina", role: "UI/UX Designer", image: teamMember4 },
-  { id: 5, name: "Oleksii", surname: "Zarytskyi", role: "Software Developer", image: teamMember4 },
-  { id: 6, name: "Anatolii", surname: "Grigorzhevsky", role: "Software Developer", image: teamMember1 }
+  { id: 1, name: "Vaso", surname: "Berulava", role: "SEO", image: vaso },
+  { id: 2, name: "Katie", surname: "Tsymbal", role: "Team Lead", image:  katie },
+  { id: 3, name: "Alexi", surname: "Kto-to", role: "SEO", image: alexi },
+  { id: 4, name: "Oleksii", surname: "Zarytskyi", role: "Software Developer", image: oleksii },
+  { id: 5, name: "Anatolii", surname: "Grigorzhevsky", role: "Software Developer", image: tolia }
 ];
 
 export const VRTeamCarousel = () => {

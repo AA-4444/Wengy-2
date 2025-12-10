@@ -7,7 +7,7 @@ const testimonials = [
 	id: 1,
 	name: "ALEXANDER CHEN",
 	role: "CEO, NEXUS TECH",
-	quote: "Working with this studio transformed our digital presence entirely. Their attention to detail and creative vision exceeded all expectations.",
+	quote: "Working with this studio transformed our digital presence entirely. ",
 	project: "BRAND IDENTITY"
   },
   {

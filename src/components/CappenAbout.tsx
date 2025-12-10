@@ -66,9 +66,9 @@ export const CappenAbout = () => {
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          We are a visionary independent digital product studio working at the
-          intersection of strategy, design, and technology. We lead organizations
-          into their digital future.
+         We are a performance-driven advertising agency focused on one thing — measurable growth.
+         Through precision advertising and deep marketing audits, we help businesses eliminate wasted budget, scale profitably, and turn marketing into a predictable acquisition engine.
+
         </motion.p>
       </motion.div>
     </section>

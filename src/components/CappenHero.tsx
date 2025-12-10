@@ -134,12 +134,12 @@ export const CappenHero: React.FC = () => {
   const title = [
     "AN",
     "INDEPENDENT",
-    "CREATIVE",
-    "STUDIO",
+    "PERFORMANCE",
+    "AGENCY",
     "SPECIALIZED",
     "IN",
-    "DIGITAL",
-    "EXPERIENCES.",
+    "SCALING",
+    "BRANDS.",
   ];
 
   return (

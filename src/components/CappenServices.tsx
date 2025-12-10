@@ -5,28 +5,34 @@ import { ChevronDown } from "lucide-react";
 
 const services = [
   {
-    title: "BRAND STRATEGY",
-    description: "We craft distinctive brand identities that resonate with your audience. Our strategic approach includes brand positioning, messaging frameworks, and comprehensive guidelines."
+    title: "MARKETING AUDIT",
+    description:
+      "A deep diagnostic of your entire marketing ecosystem — campaigns, audiences, tracking, funnel, website, and messaging. You receive a clear roadmap to eliminate wasted spend and unlock faster growth.",
   },
   {
-    title: "DIGITAL PRODUCTS",
-    description: "End-to-end product design and development. From concept to launch, we build scalable digital solutions that deliver exceptional user experiences."
+    title: "PERFORMANCE STRATEGY",
+    description:
+      "We build data-driven advertising strategies designed to reduce costs, increase conversions, and create predictable growth. Every strategy is tailored to your niche, audience, and business goals.",
   },
   {
-    title: "USER EXPERIENCE",
-    description: "Research-driven UX design that prioritizes user needs. We create intuitive interfaces through wireframing, prototyping, and rigorous user testing."
+    title: "CAMPAIGN MANAGEMENT",
+    description:
+      "End-to-end management of Meta, TikTok, and Google Ads. We handle setup, testing, optimization, and scaling — ensuring your budget works at maximum efficiency.",
   },
   {
-    title: "CREATIVE DIRECTION",
-    description: "Visionary creative leadership for your projects. We define aesthetic direction, oversee execution, and ensure consistency across all touchpoints."
+    title: "FUNNEL & USER JOURNEY ANALYSIS",
+    description:
+      "We analyze how users move through your funnel, identify drop-off points, fix inefficiencies, and improve the path from click to sale. Better flow means higher profitability.",
   },
   {
-    title: "DEVELOPMENT",
-    description: "High-performance web and mobile development. We build with cutting-edge technologies, ensuring speed, security, and seamless functionality."
+    title: "CREATIVE PERFORMANCE",
+    description:
+      "We create, test, and refine high-performing ad creatives that drive real business results. Every concept is built around data, psychology, and continuous A/B testing.",
   },
   {
-    title: "MOTION DESIGN",
-    description: "Dynamic animations and motion graphics that bring your brand to life. From micro-interactions to full video production."
+    title: "TRACKING & DATA SETUP",
+    description:
+      "We ensure your analytics, pixels, events, and conversions are configured correctly — giving you clean, reliable data to scale with confidence.",
   },
 ];
 
@@ -51,7 +57,9 @@ export const CappenServices = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+              onClick={() =>
+                setExpandedIndex(expandedIndex === index ? null : index)
+              }
             >
               <motion.div
                 className="absolute inset-0 bg-primary origin-left"
@@ -59,17 +67,26 @@ export const CappenServices = () => {
                 animate={{ scaleX: expandedIndex === index ? 1 : 0 }}
                 transition={{ duration: 0.4 }}
               />
-              
+
               <div className="relative z-10 p-12">
                 <div className="flex justify-between items-start">
-                  <h3 className={`text-xl sm:text-2xl md:text-4xl font-light transition-colors duration-300 ${                    expandedIndex === index ? "text-background" : "text-foreground group-hover:text-primary"
-                  }`}>
+                  <h3
+                    className={`text-xl sm:text-2xl md:text-4xl font-light transition-colors duration-300 ${
+                      expandedIndex === index
+                        ? "text-background"
+                        : "text-foreground group-hover:text-primary"
+                    }`}
+                  >
                     <InteractiveText text={service.title} />
                   </h3>
                   <motion.div
                     animate={{ rotate: expandedIndex === index ? 180 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className={expandedIndex === index ? "text-background" : "text-foreground"}
+                    className={
+                      expandedIndex === index
+                        ? "text-background"
+                        : "text-foreground"
+                    }
                   >
                     <ChevronDown className="w-6 h-6" />
                   </motion.div>
