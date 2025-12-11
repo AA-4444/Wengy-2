@@ -69,9 +69,9 @@ export const CappenServices = () => {
               />
 
               <div className="relative z-10 p-12">
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between items-start gap-4">
                   <h3
-                    className={`text-xl sm:text-2xl md:text-4xl font-light transition-colors duration-300 ${
+                    className={`text-base sm:text-xl md:text-3xl font-light leading-snug transition-colors duration-300 ${
                       expandedIndex === index
                         ? "text-background"
                         : "text-foreground group-hover:text-primary"

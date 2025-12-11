@@ -18,9 +18,9 @@ interface TeamMember {
 }
 
 const teamMembers: TeamMember[] = [
-  { id: 1, name: "Vaso", surname: "Berulava", role: "SEO", image: vaso },
+  { id: 1, name: "Vaso", surname: "Berulava", role: "СEO/CMO", image: vaso },
   { id: 2, name: "Katie", surname: "Tsymbal", role: "Team Lead", image:  katie },
-  { id: 3, name: "Alexi", surname: "Kto-to", role: "SEO", image: alexi },
+  { id: 3, name: "Alexi", surname: "Shakaia", role: "COO", image: alexi },
   { id: 4, name: "Oleksii", surname: "Zarytskyi", role: "Software Developer", image: oleksii },
   { id: 5, name: "Anatolii", surname: "Grigorzhevsky", role: "Software Developer", image: tolia }
 ];

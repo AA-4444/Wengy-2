@@ -9,24 +9,24 @@ export const CappenContact = () => {
   ];
 
   return (
-   <section
-     id="contact"
-     className="
-       relative min-h-screen bg-black text-white
-       flex items-center justify-center
-       px-6 md:px-16 lg:px-24
-       pt-24 pb-32 md:py-24
-       overflow-hidden
-     "
-   >
+  <section
+    id="contact"
+    className="
+      relative min-h-screen bg-black text-white
+      flex items-center justify-center
+      px-6 md:px-16 lg:px-24
+      pt-24 pb-64 md:py-24
+      overflow-hidden
+    "
+  >
     
      
 <motion.a
       href="mailto:wengy.agency@gmail.com"
       className="
         inline-block
-        whitespace-nowrap     /* НЕ ДАЁМ ПЕРЕНОС */ 
-        text-[5vw]            /* фикс для мобильных */
+        whitespace-nowrap      
+        text-[5vw]            
         sm:text-4xl
         md:text-5xl
         lg:text-6xl

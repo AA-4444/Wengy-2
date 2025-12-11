@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 
-
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -31,7 +30,6 @@ const AnimatedLetter: React.FC<AnimatedLetterProps> = ({
   delay,
   isMobile,
 }) => {
- 
   if (!isMobile) {
     return (
       <motion.span
@@ -54,13 +52,11 @@ const AnimatedLetter: React.FC<AnimatedLetterProps> = ({
     );
   }
 
-  
   const controls = useAnimation();
 
   useEffect(() => {
     const introDuration = 0.8;
 
-   
     controls.start({
       y: 0,
       rotateX: 0,
@@ -72,7 +68,6 @@ const AnimatedLetter: React.FC<AnimatedLetterProps> = ({
       },
     });
 
-    
     const totalDelayMs = (delay + introDuration) * 1000;
 
     const timer = setTimeout(() => {
@@ -115,12 +110,12 @@ const AnimatedWord = ({
   const letters = word.split("");
 
   return (
-    <span className="inline-block overflow-hidden">
+    <span className="inline-block whitespace-nowrap">
       {letters.map((letter, index) => (
         <AnimatedLetter
           key={index}
           letter={letter === " " ? "\u00A0" : letter}
-          delay={delay + index * 0.12} 
+          delay={delay + index * 0.12}
           isMobile={isMobile}
         />
       ))}
@@ -183,7 +178,6 @@ export const CappenHero: React.FC = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5, delay: 0.5 }}
       >
-        
         <h1 className="text-[10vw] sm:text-[12vw] leading-[0.9] font-light mb-8">
           {title.map((line, lineIndex) => (
             <span key={lineIndex} className="block">

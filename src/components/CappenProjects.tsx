@@ -29,7 +29,7 @@ const projects = [
   {
     name: "The Park",
     year: "2024",
-    category: "HOSPITALITY",
+    category: "DETAILING",
     instagram: "https://www.instagram.com/the.park.tbilisi?igsh=MXc0aXF1MzM5b3RpMg==",
   },
   {
@@ -53,7 +53,7 @@ const projects = [
   {
     name: "Tsre.co",
     year: "2025",
-    category: "REAL ESTATE",
+    category: "CO-WORKING",
     instagram: "https://www.instagram.com/tsre.co?igsh=MXEybmx6bnV3amV6Zw==",
   },
   {
@@ -65,7 +65,7 @@ const projects = [
   {
     name: "Ava 100",
     year: "2025",
-    category: "RETAIL & FMCG",
+    category: "real estate developer",
     instagram: "https://www.instagram.com/ava100.ua?igsh=MTR5OWIyeW42YTBuYw==",
   },
 ];
@@ -125,20 +125,26 @@ const ProjectItem = ({
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
       <div className="flex justify-between items-center gap-4">
-        {/* Название → кликабельный линк на Instagram */}
         <motion.a
           href={project.instagram}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-5xl md:text-7xl font-light group-hover:text-primary transition-colors duration-300"
+          className="
+            text-3xl md:text-7xl   /* 🔥 было text-5xl, сделал меньше на мобиле */
+            font-light
+            group-hover:text-primary
+            transition-colors duration-300
+          "
           style={{ x: index % 2 === 0 ? x : xOpposite }}
         >
           {project.name}
         </motion.a>
 
         <div className="text-right shrink-0">
-          <div className="text-2xl font-light">{project.year}</div>
-          <div className="text-lg text-muted-foreground">
+          <div className="text-lg md:text-2xl font-light">
+            {project.year}
+          </div>
+          <div className="text-xs md:text-lg text-muted-foreground">
             {project.category}
           </div>
         </div>
