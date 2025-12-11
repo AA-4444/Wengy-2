@@ -3,7 +3,9 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ava from "@/assets/project1.png";
 import citywall from "@/assets/project2.png";
-import vrLights from "@/assets/vr-lights.jpg";
+import datadash from "@/assets/04.png";
+import duck from "@/assets/03.png";
+import solution from "@/assets/05.png";
 
 interface CarouselItem {
   id: number;
@@ -14,7 +16,9 @@ interface CarouselItem {
 const items: CarouselItem[] = [
   { id: 1, title: "ava100", image: ava },
   { id: 2, title: "city-wall", image: citywall },
-  { id: 3, title: "LIGHTS", image: vrLights },
+  { id: 3, title: "datadash", image: datadash },
+  { id: 4, title: "privacyduck", image: duck },
+  { id: 5, title: "Saas", image: solution },
 ];
 
 export const VRCarousel = () => {
@@ -72,26 +76,35 @@ export const VRCarousel = () => {
 
   const getCardPosition = (index: number) => {
     let diff = index - currentIndex;
-
-    // Normalize diff to circular
+  
+    
     if (diff > items.length / 2) {
       diff -= items.length;
     } else if (diff < -items.length / 2) {
       diff += items.length;
     }
-
-    const angle = diff * 45;
-    const translateX = diff * (isMobile ? 250 : 400);
-    const translateZ = -Math.abs(diff) * (isMobile ? 150 : 200);
+  
+    const maxDiff = Math.floor(items.length / 2); 
+  
+    const maxAngle = 60;                 
+    const angleStep = maxAngle / maxDiff;
+    const angle = diff * angleStep;    
+  
+    const baseX = isMobile ? 220 : 340;
+    const baseZ = isMobile ? 120 : 160;
+  
+    const translateX = diff * baseX;
+    const translateZ = -Math.abs(diff) * baseZ;
     const rotateY = -angle;
-    const scale = 1 - Math.abs(diff) * 0.2;
-    const opacity = 1 - Math.abs(diff) * 0.3;
-    const zIndex = 30 - Math.abs(diff) * 10;
-
+  
+    const scale = 1 - Math.abs(diff) * 0.15;
+    const opacity = 1 - Math.abs(diff) * 0.2;
+    const zIndex = 30 - Math.abs(diff) * 5;
+  
     return {
       transform: `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`,
       zIndex: Math.max(0, zIndex),
-      opacity: Math.max(0.3, opacity),
+      opacity: Math.max(0.25, opacity),
     };
   };
 
