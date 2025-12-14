@@ -40,7 +40,7 @@ export const CappenServices = () => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-32 px-6">
+    <section className="min-h-screen flex items-center justify-center py-24 px-4 sm:px-6">
       <div className="w-full max-w-7xl mx-auto">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -53,42 +53,50 @@ export const CappenServices = () => {
             <motion.div
               key={service.title}
               className="group relative border border-border cursor-pointer overflow-hidden"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
               onClick={() =>
                 setExpandedIndex(expandedIndex === index ? null : index)
               }
             >
+              {/* background animation */}
               <motion.div
                 className="absolute inset-0 bg-primary origin-left"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: expandedIndex === index ? 1 : 0 }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.35 }}
               />
 
-              <div className="relative z-10 p-12">
+              <div className="relative z-10 p-6 sm:p-8 md:p-12">
                 <div className="flex justify-between items-start gap-4">
                   <h3
-                    className={`text-base sm:text-xl md:text-3xl font-light leading-snug transition-colors duration-300 ${
-                      expandedIndex === index
-                        ? "text-background"
-                        : "text-foreground group-hover:text-primary"
-                    }`}
+                    className={`
+                      text-lg sm:text-xl md:text-3xl
+                      font-light leading-snug
+                      transition-colors duration-300
+                      text-balance
+                      ${
+                        expandedIndex === index
+                          ? "text-background"
+                          : "text-foreground group-hover:text-primary"
+                      }
+                    `}
                   >
                     <InteractiveText text={service.title} />
                   </h3>
+
                   <motion.div
                     animate={{ rotate: expandedIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
                     className={
                       expandedIndex === index
                         ? "text-background"
                         : "text-foreground"
                     }
                   >
-                    <ChevronDown className="w-6 h-6" />
+                    <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6" />
                   </motion.div>
                 </div>
 
@@ -98,15 +106,15 @@ export const CappenServices = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                       className="overflow-hidden"
                     >
                       <motion.p
-                        initial={{ y: 20 }}
+                        initial={{ y: 16 }}
                         animate={{ y: 0 }}
-                        exit={{ y: 20 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-lg font-light leading-relaxed mt-6 text-background"
+                        exit={{ y: 16 }}
+                        transition={{ duration: 0.25 }}
+                        className="mt-6 text-base sm:text-lg font-light leading-relaxed text-background"
                       >
                         {service.description}
                       </motion.p>
