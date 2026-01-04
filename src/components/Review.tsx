@@ -5,31 +5,35 @@ import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
 const testimonials = [
   {
 	id: 1,
-	name: "ALEXANDER CHEN",
-	role: "CEO, NEXUS TECH",
-	quote: "Working with this studio transformed our digital presence entirely. ",
-	project: "BRAND IDENTITY"
+	name: "ALEXEY RUDENKO",
+	role: "CO-FOUNDER, PRIME BUILD",
+	quote:
+	  "What impressed me is transparency — weekly reports, metrics, and no unrealistic promises. Just data, work and growth. We’re already scaling campaigns together.",
+	project: "META ADS",
   },
   {
 	id: 2,
-	name: "MARIA SANTOS",
-	role: "FOUNDER, ARTWAVE",
-	quote: "The team delivered a product that not only looks stunning but performs flawlessly. True masters of their craft.",
-	project: "DIGITAL PRODUCT"
+	name: "DMITRY SAVCHENKO",
+	role: "CO-FOUNDER, TECHNOVA",
+	quote:
+	  "Our ads were chaotic before. Wengy stepped in, organized accounts, launched new strategies and finally our traffic became profitable. Easy communication, quick responses and clear strategy behind every step.",
+	project: "GOOGLE ADS",
   },
   {
 	id: 3,
-	name: "DAVID MÜLLER",
-	role: "CREATIVE DIRECTOR, FORM STUDIO",
-	quote: "Exceptional collaboration from start to finish. They understood our vision and elevated it to new heights.",
-	project: "MOTION DESIGN"
+	name: "GEORGI MAMULASHVILI",
+	role: "FOUNDER, HOME STYLE GEORGIA",
+	quote:
+	  "Wengy took over our Meta campaigns and things finally started to move. Clear structure, constant communication, and stable lead flow — exactly what we were looking for.",
+	project: "META ADS",
   },
   {
 	id: 4,
-	name: "ELENA VOLKOV",
-	role: "CMO, STRATIFY",
-	quote: "Their strategic approach to UX design resulted in a 200% increase in user engagement. Truly outstanding work.",
-	project: "USER EXPERIENCE"
+	name: "NATALI GVINIASVILI",
+	role: "OWNER, BEAUTY CORNER",
+	quote:
+	  "We came for TikTok Ads to scale faster and cheaper. The team nailed the creative direction from the first batch — views came instantly and leads followed. Easy to work with, fast and proactive.",
+	project: "TIKTOK ADS",
   },
 ];
 
