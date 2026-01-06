@@ -20,7 +20,7 @@ const services = [
       "End-to-end management of Meta, TikTok, and Google Ads. We handle setup, testing, optimization, and scaling — ensuring your budget works at maximum efficiency.",
   },
   {
-    title: "FUNNEL & USER JOURNEY ANALYSIS",
+    title: "User Conversion Journey",
     description:
       "We analyze how users move through your funnel, identify drop-off points, fix inefficiencies, and improve the path from click to sale. Better flow means higher profitability.",
   },
